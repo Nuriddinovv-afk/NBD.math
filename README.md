@@ -1,0 +1,2 @@
+# NBD.math
+STUDY HARD TO LIVE
