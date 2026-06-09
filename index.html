@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NB Test Markazi - Premium Matematika imtihoni</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0; padding: 0; box-sizing: border-box; color: #1e293b;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://png.pngtree.com/background/20231017/original/pngtree-beautiful-night-sky-with-a-stars-picture-image_15706031.jpg');
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+        h1, h2, h3 { text-align: center; color: #1e3a8a; }
+        .hidden { display: none !important; }
+        .btn {
+            display: inline-block; width: 100%; padding: 14px; background: #2563eb; color: white;
+            border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: 0.3s;
+            margin-top: 15px; text-align: center; text-decoration: none;
+        }
+        .btn:hover { background: #1d4ed8; }
+        .btn-admin { background: #64748b; margin-top: 10px; }
+        .btn-admin:hover { background: #475569; }
+        .btn-back { background: #ef4444; width: auto; padding: 10px 20px; float: left; }
+        .btn-back:hover { background: #dc2626; }
+        input, select {
+            width: 100%; padding: 14px; margin: 12px 0; border: 2px solid #cbd5e1;
+            border-radius: 8px; box-sizing: border-box; font-size: 1rem; transition: 0.3s;
+        }
+        input:focus, select:focus { border-color: #2563eb; outline: none; }
+        .timer {
+            text-align: right; font-size: 1.3rem; font-weight: bold; color: #dc2626; margin-bottom: 20px;
+            background: #fee2e2; padding: 8px 15px; border-radius: 6px; display: inline-block; float: right;
+        }
+        .question-card {
+            background: #f8fafc; padding: 25px; border-left: 6px solid #2563eb;
+            border-radius: 8px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .options label {
+            display: block; padding: 12px 15px; background: white; border: 1px solid #e2e8f0;
+            border-radius: 8px; margin: 10px 0; cursor: pointer; transition: 0.2s; font-size: 1.05rem;
+        }
+        .options label:hover { background: #eff6ff; border-color: #3b82f6; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95rem; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background-color: #f1f5f9; color: #1e3a8a; font-weight: bold; }
+        tr:hover { background-color: #f8fafc; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.85rem; }
+        .badge-success { background: #dcfce7; color: #15803d; }
+        .badge-fail { background: #fee2e2; color: #b91c1c; }
+
+        /* SERTIFIKAT DIZAYNI */
+        #certificate-area {
+            width: 750px;
+            height: 530px;
+            margin: 30px auto;
+            background-image: url('https://png.pngtree.com/background/20230411/original/pngtree-certificate-of-appreciation-template-for-business-company-free-vector-picture-image_2391039.jpg'); 
+            background-size: 100% 100%;
+            background-position: center;
+            position: relative;
+            box-sizing: border-box;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .cert-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 185px 70px 40px 70px;
+        }
+        .cert-user {
+            font-size: 2.3rem;
+            color: #0f172a;
+            font-weight: bold;
+            font-style: italic;
+            border-bottom: 2px solid #b45309;
+            display: inline-block;
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+            min-width: 320px;
+            letter-spacing: 1px;
+        }
+        .cert-text {
+            font-size: 1.15rem;
+            color: #334155;
+            line-height: 1.6;
+            margin: 15px auto;
+            max-width: 540px;
+        }
+        .cert-subject { font-weight: bold; color: #1e3a8a; font-size: 1.2rem; }
+        .cert-score-box {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #b45309;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cert-meta-row {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 50px;
+        }
+        .cert-meta-item {
+            font-size: 1rem;
+            color: #475569;
+            border-top: 1px solid #94a3b8;
+            padding-top: 5px;
+            width: 150px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="login-box">
+    <h1 style="font-size: 2.2rem; margin-bottom: 10px;">NB Test Markazi</h1>
+    <p style="text-align:center; color: #64748b; margin-bottom: 25px;">Chuqurlashtirilgan va randomizatsiyalangan matematika imtihon tizimi</p>
+    
+    <label style="font-weight: 600;">Foydalanuvchi ma'lumotlari:</label>
+    <input type="text" id="username" placeholder="Ism va Familiyangizni kiriting...">
+    
+    <label style="font-weight: 600;">Imtihon mavzusi:</label>
+    <select id="subject-select"></select>
+    
+    <button class="btn" onclick="startTest()">Imtihonni Boshlash (30 ta test / 45 daqiqa)</button>
+    <button class="btn btn-admin" onclick="openAdmin()">Admin Panel (Database Natijalari)</button>
+</div>
+
+<div class="container hidden" id="test-box">
+    <div style="overflow: hidden; margin-bottom: 15px;">
+        <div class="timer" id="timer-display">Vaqt: 45:00</div>
+        <h2 id="current-subject-title" style="text-align: left; margin: 10px 0;">Mavzu</h2>
+    </div>
+    <hr style="border: 1px solid #e2e8f0; margin-bottom: 25px;">
+    <div id="quiz-container"></div>
+    <button class="btn" onclick="finishTest()">Testni Yakunlash va Natijani Saqlash</button>
+</div>
+
+<div class="container hidden" id="result-box">
+    <h2>Imtihon Yakunlandi</h2>
+    <p id="result-text" style="font-size:1.25rem; text-align:center; line-height: 1.6; margin: 20px 0;"></p>
+    
+    <div id="certificate-area" class="hidden">
+        <div class="cert-inner">
+            <div class="cert-user" id="cert-name">ISMOILOV TOXIR</div>
+            <div class="cert-text">
+                has successfully demonstrated advanced competency and exceptional knowledge in Mathematics by passing the comprehensive examination on 
+                <span class="cert-subject" id="cert-subject">SONLAR VA AMALLAR</span>.
+            </div>
+            <div class="cert-score-box" id="cert-score">SCORE: 96%</div>
+            
+            <div class="cert-meta-row">
+                <div class="cert-meta-item" id="cert-date">09.06.2026</div>
+                <div class="cert-meta-item" style="font-weight: bold; color: #1e3a8a;">NB CENTER</div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="btn" onclick="location.reload()">Bosh sahifaga qaytish</button>
+</div>
+
+<div class="container hidden" id="admin-box">
+    <button class="btn btn-back" onclick="closeAdmin()">← Orqaga</button>
+    <h2 style="margin-top: 10px;">Natijalar Ma'lumotlar Bazasi (Database)</h2>
+    
+    <div style="text-align: right; margin-bottom: 10px;">
+        <button onclick="clearDatabase()" style="background: #ef4444; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: bold;">Bazani tozalash</button>
+    </div>
+
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Ism-Familiya</th>
+                    <th>Mavzu</th>
+                    <th>To'g'ri/Jami</th>
+                    <th>Foiz (%)</th>
+                    <th>Sana va Vaqt</th>
+                    <th>Sertifikat</th>
+                </tr>
+            </thead>
+            <tbody id="database-body"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="savollar.js"></script>
+<script>
+    let tanlanganSavollar = [];
+    let timerInterval;
+    let totalSeconds = 2700; // 45 daqiqa (30 ta qiyin savol uchun moslangan)
+
+    window.onload = function() {
+        const select = document.getElementById("subject-select");
+        if (typeof testlarBazasi !== 'undefined') {
+            Object.keys(testlarBazasi).forEach(mavzu => {
+                let opt = document.createElement("option");
+                opt.value = mavzu;
+                opt.textContent = `${mavzu}`;
+                select.appendChild(opt);
+            });
+        }
+    };
+
+    function startTest() {
+        const ism = document.getElementById("username").value.trim();
+        const mavzu = document.getElementById("subject-select").value;
+
+        if(!ism) return alert("Iltimos, ism-familiyangizni kiriting!");
+        if(!mavzu) return alert("Iltimos, imtihon mavzusini tanlang!");
+
+        // Bazadan 50 ta elementli massivni olamiz
+        let hammaSavollar = [...testlarBazasi[mavzu]];
+
+        // SAVOLLARNI MUKAMMAL ARALASHTIRISH (Fisher-Yates)
+        for (let i = hammaSavollar.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [hammaSavollar[i], hammaSavollar[j]] = [hammaSavollar[j], hammaSavollar[i]];
+        }
+
+        // 50 tadan MUTLAQO HAR XIL BO'LGAN 30 TASINI KESIB OLAMIZ
+        tanlanganSavollar = hammaSavollar.slice(0, 30); 
+
+        document.getElementById("current-subject-title").textContent = `Mavzu: ${mavzu} (${tanlanganSavollar.length} ta test)`;
+        document.getElementById("login-box").classList.add("hidden");
+        document.getElementById("test-box").classList.remove("hidden");
+
+        renderQuiz();
+        startTimer();
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            if(totalSeconds <= 0) {
+                clearInterval(timerInterval);
+                finishTest();
+            } else {
+                totalSeconds--;
+                let min = Math.floor(totalSeconds / 60);
+                let sec = totalSeconds % 60;
+                document.getElementById("timer-display").textContent = `Vaqt: ${min}:${sec < 10 ? '0':''}${sec}`;
+            }
+        }, 1000);
+    }
+
+    function renderQuiz() {
+        const container = document.getElementById("quiz-container");
+        container.innerHTML = "";
+        tanlanganSavollar.forEach((s, idx) => {
+            let card = document.createElement("div");
+            card.className = "question-card";
+            card.innerHTML = `
+                <p style="font-size:1.1rem; margin-top:0;"><strong>${idx + 1}-savol:</strong> ${s.q}</p>
+                <div class="options">
+                    <label><input type="radio" name="q${idx}" value="a"> A) ${s.a}</label>
+                    <label><input type="radio" name="q${idx}" value="b"> B) ${s.b}</label>
+                    <label><input type="radio" name="q${idx}" value="c"> C) ${s.c}</label>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function finishTest() {
+        clearInterval(timerInterval);
+        const ism = document.getElementById("username").value.trim();
+        const mavzu = document.getElementById("subject-select").value;
+        let togriTopildi = 0;
+
+        tanlanganSavollar.forEach((s, idx) => {
+            let tanlov = document.querySelector(`input[name="q${idx}"]:checked`);
+            if(tanlov && tanlov.value === s.r) {
+                togriTopildi++;
+            }
+        });
+
+        let foiz = Math.round((togriTopildi / tanlanganSavollar.length) * 100);
+        let hozir = new Date();
+        let sana = hozir.getDate().toString().padStart(2, '0') + '.' + 
+                   (hozir.getMonth()+1).toString().padStart(2, '0') + '.' + 
+                   hozir.getFullYear() + ' ' + 
+                   hozir.getHours().toString().padStart(2, '0') + ':' + 
+                   hozir.getMinutes().toString().padStart(2, '0');
+
+        let yangiNatija = {
+            name: ism, subject: mavzu, correct: togriTopildi, total: tanlanganSavollar.length, score: foiz, date: sana
+        };
+
+        let oldingiBaza = JSON.parse(localStorage.getItem("nb_db")) || [];
+        oldingiBaza.push(yangiNatija);
+        localStorage.setItem("nb_db", JSON.stringify(oldingiBaza));
+
+        document.getElementById("test-box").classList.add("hidden");
+        document.getElementById("result-box").classList.remove("hidden");
+
+        document.getElementById("result-text").innerHTML = `
+            Hurmatli <strong>${ism}</strong>!<br>
+            Siz <strong>${mavzu}</strong> imtihonidan o'tdingiz va natijangiz <b>tizim bazasiga muhrlandi</b>.<br>
+            Ko'rsatkichingiz: <strong>${togriTopildi} / ${tanlanganSavollar.length} ta o'rinli</strong> (${foiz}%)
+        `;
+
+        if(foiz >= 60) {
+            document.getElementById("certificate-area").classList.remove("hidden");
+            document.getElementById("cert-name").textContent = ism.toUpperCase();
+            document.getElementById("cert-subject").textContent = mavzu.toUpperCase();
+            document.getElementById("cert-score").textContent = `SCORE: ${foiz}%`;
+            document.getElementById("cert-date").textContent = sana.split(' ')[0];
+        }
+    }
+
+    function openAdmin() {
+        document.getElementById("login-box").classList.add("hidden");
+        document.getElementById("admin-box").classList.remove("hidden");
+        const tbody = document.getElementById("database-body");
+        tbody.innerHTML = "";
+        let baza = JSON.parse(localStorage.getItem("nb_db")) || [];
+        if(baza.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#94a3b8;">Hozircha bazada natija yo'q.</td></tr>`;
+            return;
+        }
+        baza.reverse().forEach((data, index) => {
+            let statusBadge = data.score >= 60 ? `<span class="badge badge-success">Berildi</span>` : `<span class="badge badge-fail">Yiqildi</span>`;
+            let row = document.createElement("tr");
+            row.innerHTML = `
+                <td><strong>${baza.length - index}</strong></td>
+                <td><b>${data.name}</b></td>
+                <td>${data.subject}</td>
+                <td>${data.correct} / ${data.total}</td>
+                <td><b style="color:${data.score >= 60 ? '#16a34a':'#dc2626'}">${data.score}%</b></td>
+                <td>${data.date}</td>
+                <td>${statusBadge}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
+    function closeAdmin() {
+        document.getElementById("admin-box").classList.add("hidden");
+        document.getElementById("login-box").classList.remove("hidden");
+    }
+
+    function clearDatabase() {
+        if(confirm("Ma'lumotlar bazasini o'chirib tashlamoqchimisiz?")) {
+            localStorage.removeItem("nb_db");
+            openAdmin();
+        }
+    }
+</script>
+</body>
+</html>
